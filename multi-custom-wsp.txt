@@ -1,0 +1,28 @@
+pipeline {
+		
+		agent{
+			label {	
+				label'slave1'
+				customWorkspace '/mnt/wsp1'
+			}
+		}
+		stages {
+			stage('custom-wsp1'){
+				steps{
+					sh 'rm -rf *'
+					sh 'mkdir tesa-app'
+				}
+			
+			}
+			stage('custom-wsp2'){
+				steps{
+					dir('/mnt/wsp2'){
+						sh 'rm -rf *'
+						sh 'mkdir tesa-app'
+					
+					}
+				}
+			
+			}
+		}
+}

@@ -1,0 +1,16 @@
+pipeline {
+		agent{
+			node {
+				label 'slave1'
+			}
+		}
+		stages {
+			stage('triger-job') {
+					steps {
+						build 'seq-job'
+						sh 'rm -rf *'
+						sh 'mkdir tesa'
+					}
+			}
+		}
+}
